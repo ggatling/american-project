@@ -17,7 +17,4 @@ public class User {
     @Column
     private String password;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name ="user_profile_id")
-    private UserProfile userProfile;
 }
