@@ -1,14 +1,18 @@
 package com.example.myfavmovie.Models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name ="users")
 public class User {
     @Id
     @Column
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(unique = true)
@@ -17,7 +21,25 @@ public class User {
     @Column
     private String password;
 
-    public Long getId() {
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name ="user_profile_id")
+    private UserProfile userProfile;
+
+    @OneToMany(
+            mappedBy = "user",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+
+    @JsonIgnore
+    private List<SavedMovies> movies;
+
+    @OneToMany(
+            mappedBy = "user",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+
+    public Long getId(){
         return id;
     }
 
@@ -39,5 +61,26 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<SavedMovies> getSavedmovies() {
+        return movies;
+    }
+
+    public List<SavedMovies> addClothes(SavedMovies savedMovies){
+        if (movies==null ){
+            movies = new ArrayList<>();
+        }
+        movies.add(savedMovies);
+
+        return movies;
+    }
+
+    public UserProfile getUserProfile() {
+        return userProfile;
+    }
+
+    public void setUserProfile(UserProfile userProfile) {
+        this.userProfile = userProfile;
     }
 }
