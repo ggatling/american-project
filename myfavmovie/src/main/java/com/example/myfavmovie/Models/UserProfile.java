@@ -1,6 +1,8 @@
 package com.example.myfavmovie.Models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -22,6 +24,11 @@ public class UserProfile {
 
     @Column
     private String favorite_genre;
+
+    @JsonIgnore
+    @OneToOne(mappedBy = "userProfile",
+            cascade = {CascadeType.DETACH, CascadeType.MERGE,
+                    CascadeType.PERSIST, CascadeType.REFRESH})
 
     public Long getId() {
         return id;
