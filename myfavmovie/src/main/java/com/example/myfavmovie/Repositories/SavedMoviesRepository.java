@@ -5,8 +5,8 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SavedMovies extends CrudRepository<SavedMovies, Long> {
+public interface SavedMoviesRepository extends CrudRepository<SavedMoviesRepository, Long> {
     @Query("select * FROM SavedMovies s WHERE s.user_id = ?1")
-    public Iterable<SavedMovies> findByUserId(Long userId);
+    public Iterable<SavedMoviesRepository> findByUserId(Long userId);
 
 }
