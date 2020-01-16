@@ -2,11 +2,11 @@ package com.example.myfavmovie.Services;
 
 import com.example.myfavmovie.Models.SavedMovies;
 import com.example.myfavmovie.Models.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
+//import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface UserService extends UserDetailsService {
+public interface UserService {
     public Iterable<User> listUsers();
 
     public Iterable<SavedMovies> listUserSavedMovies(String username);
