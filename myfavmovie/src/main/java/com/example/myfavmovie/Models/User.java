@@ -67,7 +67,7 @@ public class User {
         return movies;
     }
 
-    public List<SavedMovies> addClothes(SavedMovies savedMovies){
+    public List<SavedMovies> addSavedMovies(SavedMovies savedMovies){
         if (movies==null ){
             movies = new ArrayList<>();
         }
