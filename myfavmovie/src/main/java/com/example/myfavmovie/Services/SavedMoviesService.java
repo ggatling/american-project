@@ -1,9 +1,11 @@
 package com.example.myfavmovie.Services;
 
-
+import com.example.myfavmovie.Models.SavedMovies;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
-public interface SavedMovies {
+@Service
+public interface SavedMoviesService {
     //List all Movies
     public Iterable<SavedMovies> listAllSavedMovies();
 
@@ -14,5 +16,5 @@ public interface SavedMovies {
     public SavedMovies createSavedMovies(SavedMovies newmovies);
 
     //Deletes movies
-    public ResponseEntity deleteSavedMovies(SavedMovies moviesId);
+    public ResponseEntity deleteSavedMovies(Long moviesId);
 }
