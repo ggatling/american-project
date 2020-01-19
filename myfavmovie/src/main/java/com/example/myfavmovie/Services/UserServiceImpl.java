@@ -5,8 +5,6 @@ import com.example.myfavmovie.Models.SavedMovies;
 import com.example.myfavmovie.Models.User;
 import com.example.myfavmovie.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import com.example.myfavmovie.Services.UserProfileService;
 

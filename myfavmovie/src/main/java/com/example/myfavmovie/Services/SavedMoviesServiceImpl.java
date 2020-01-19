@@ -4,7 +4,7 @@ import com.example.myfavmovie.Repositories.SavedMoviesRepository;
 import com.example.myfavmovie.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class SavedMoviesImpl {
+public class SavedMoviesServiceImpl {
     @Autowired
     SavedMoviesRepository savedMoviesRepository;
 
