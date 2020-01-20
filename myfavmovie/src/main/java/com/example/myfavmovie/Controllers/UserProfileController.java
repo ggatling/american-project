@@ -17,13 +17,13 @@ public class UserProfileController {
     public void setUserProfileService(UserProfileService userProfileService) {
         this.userProfileService = userProfileService;
     }
-//    @GetMapping("/profile")
-//    public UserProfile getUserProfile() {
-//        return userProfileService.getUserProfile();
-//    }
+    @GetMapping("/profile")
+    public UserProfile getUserProfile() {
+        return userProfileService.getUserProfile();
+    }
 
-//    @PutMapping("/profile")
-//    public UserProfile updateUserProfile(@RequestBody UserProfile userProfile) {
-//        return userProfileService.updateUserProfile(userProfile);
-//    }
+    @PutMapping("/profile")
+    public UserProfile updateUserProfile(@RequestBody UserProfile userProfile) {
+        return userProfileService.updateUserProfile(userProfile);
+    }
 }

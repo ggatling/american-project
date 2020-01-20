@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@RestController
 public class SavedMoviesController {
     @Autowired
     SavedMoviesService savedMoviesService;
@@ -24,7 +25,7 @@ public class SavedMoviesController {
 
     //List all movies saved by users
     @GetMapping("/savedmovies/list/all")
-    public Iterable<SavedMovies> listAllSavedMovies(){ return savedMoviesService.listAllSavedMovies(); }
+    public Iterable<SavedMovies>listAllSavedMovies(){ return savedMoviesService.listAllSavedMovies(); }
 
     //Add movie to saved list
     @PostMapping("/savedmovies")
@@ -34,7 +35,7 @@ public class SavedMoviesController {
 
     //List saved movies by user
     @GetMapping("/savedmovies/list")
-    public Iterable<SavedMovies> listSavedMoviesByUser(){
+    public Iterable<SavedMovies> listUsersSavedMovies(){
         return savedMoviesService.listUsersSavedMovies();
     }
 
