@@ -1,12 +1,12 @@
 package com.example.myfavmovie.Controllers;
 
+import com.example.myfavmovie.Config.JwtResponse;
 import com.example.myfavmovie.Models.SavedMovies;
 import com.example.myfavmovie.Models.User;
 import com.example.myfavmovie.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
@@ -22,4 +22,13 @@ public class UserController {
     @GetMapping("/user/{username}/savedmovies")
     public Iterable<SavedMovies> listUserSavedMovies(@PathVariable String username){ return userService.listUserSavedMovies(username); }
 
+    @PostMapping("/signup")
+    public ResponseEntity<?> createUser(@RequestBody User newUser){
+        return ResponseEntity.ok(new JwtResponse(userService.createUser(newUser)));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody User user) {
+        return ResponseEntity.ok(new JwtResponse(userService.login(user)));
+    }
 }

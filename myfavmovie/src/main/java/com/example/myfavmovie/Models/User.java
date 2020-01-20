@@ -1,6 +1,5 @@
 package com.example.myfavmovie.Models;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -63,7 +62,7 @@ public class User {
         this.password = password;
     }
 
-    public List<SavedMovies> getSavedmovies() {
+    public List<SavedMovies> getSavedMovies() {
         return movies;
     }
 
