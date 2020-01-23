@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import unirest from 'unirest';
 
+
 class App extends React.Component {
  sendRequest = (title) => {
    const req = unirest("GET", "https://movie-database-imdb-alternative.p.rapidapi.com/");
