@@ -14,7 +14,7 @@ const NavigationBar = () => {
   </Nav>
   <Form inline>
     <FormControl type="text" placeholder="Search Movie" className="mr-sm-2" />
-    <Button variant="outline-info">Search</Button>
+    <Button variant="outline-warning">Search</Button>
   </Form>
 </Navbar>
 
