@@ -25,7 +25,6 @@ class Search extends React.Component{
       <div className= "search">
         <input className="search-box" type="text" onChange={this.handleInputTitle} value={title}/>
         <input className="button" type="submit" onClick={this.handleSubmit} value="Search"/>
-        //input fields and submit button for search funtionality
       </div>
     )
   }
