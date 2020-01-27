@@ -8,9 +8,8 @@ const NavigationBar = () => {
     <Navbar bg="dark" variant="dark">
   <Navbar.Brand href="#home">My Favorite Movie</Navbar.Brand>
   <Nav className="mr-auto">
-    <Nav.Link href="#home">Home</Nav.Link>
-    <Nav.Link href="#login">Login</Nav.Link>
-    <Nav.Link href="#signup">Sign Up</Nav.Link>
+    <Nav.Link href="home">Home</Nav.Link>
+    <Nav.Link href="user">Login/SignUp</Nav.Link>
   </Nav>
   <Form inline>
     <FormControl type="text" placeholder="Search Movie" className="mr-sm-2" />
