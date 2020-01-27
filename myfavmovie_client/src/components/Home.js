@@ -1,45 +1,73 @@
-import React from 'react';
-import './App.css';
-import unirest from 'unirest';
-import Movie from "./Movie.js";
-import Search from "./Search.js";
+import React ,{useState} from 'react';
+import Search from '../components/Search';
+import axios from 'axios';
+import Results from '../components/Results';
 
+function Home() {
+  const [state,setState] = useState({
+    //setting initial state
+    s:"",
+    //search query
+    results:[],
+    //results array
+    selected:{}
+    //opens movies popup
+  });
+  const apiurl = "http://www.omdbapi.com/?apikey=a8ec5866";
 
-class Home extends React.Component {
-  state = {
-    movies:[]
+  const search = (e)=>{
+    if (e.key === "Enter"){
+      axios(apiurl + "&s="+ state.s).then(({data})=>{
+        let results = data.Search;
+        console.log(state.s)
+        //when you hit enter, search what the user input
+        setState(prevState =>{
+          return {...prevState, results: results }
+        })
+      });
+    }
   }
- sendRequest = (title) => {
-   const req = unirest("GET", "https://movie-database-imdb-alternative.p.rapidapi.com/");
-   req.query({
-     "page": "1",
-     "r": "json",
-     "s": title
-   });
-   req.headers({
-     "x-rapidapi-host": "movie-database-imdb-alternative.p.rapidapi.com",
-     "x-rapidapi-key": "add2c15264mshb5c608a74e488f9p10fa60jsnff78d2ef135d"
-   });
-   req.end((res) => {
-     if (res.error) throw new Error(res.error);
-     const movies = res.body.Search;
-     this.setState({movies});
-     console.log(res.body);
-   });
- }
- render() {
-   return (
-     <div className="App">
-       <header className="App-header">
-       {this.state.movies.map((movie) => {
-         return <Movie {...movie}/>
-            })}
-          <Search handleSendRequest={this.sendRequest}/>
 
-       </header>
-     </div>
-   );
- }
+  const handleInput = (e) => {
+    let s = e.target.value;
+
+    setState(prevState => {
+      return{...prevState, s: s}
+    });
+    console.log(state.s)
+  }
+
+  const openPopup = id => {
+    axios(apiurl + "&i=" + id).then(({ data }) => {
+      let result = data;
+
+      console.log(result);
+
+      setState(prevState => {
+        return { ...prevState, selected: result }
+      });
+    });
+  }
+
+  const closePopup = () => {
+    setState(prevState => {
+      return {...prevState, selected: {}}
+    });
+  }
+  return (
+    <div className="App">
+      <header>
+
+      </header>
+        <main>
+          <Search handleInput ={handleInput} search ={search} />
+          <Results results={state.results} openPopup ={openPopup} />
+
+
+        </main>
+
+    </div>
+  );
 }
 
 export default Home;
