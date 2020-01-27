@@ -2,6 +2,8 @@ import React ,{useState} from 'react';
 import Search from '../components/Search';
 import axios from 'axios';
 import Results from '../components/Results';
+import NavigationBar from '../components/NavigationBar';
+import User from '../components/User'
 
 function Home() {
   const [state,setState] = useState({
