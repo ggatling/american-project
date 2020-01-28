@@ -15,10 +15,12 @@ class App extends Component{
       <React.Fragment>
         <NavigationBar />
         <Jumbotron />
-        <Home />
+
+
 
         <Router>
           <Switch>
+            <Route exact path="/" component={Home} />
             <Route path="/home" component={Home} />
             <Route path="/user" component={User} />
           </Switch>

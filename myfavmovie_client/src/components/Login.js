@@ -27,7 +27,7 @@ const Login = props => {
             placeholder="password"
           />
         </FormGroup>
-        <Button className="btn btn-primary btn-block">Log in</Button>
+        <Button color="warning"className="btn btn-primary btn-block">Log in</Button>
       </Form>
     </div>
   );
