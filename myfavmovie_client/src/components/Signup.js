@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+
 const Signup = props => {
   // console.log(`we are inside signup, email prop is ${props.email}`)
   return (
@@ -40,7 +41,7 @@ const Signup = props => {
               placeholder="password"
             />
         </FormGroup>
-        <Button className="btn btn-primary btn-block">Sign Up</Button>
+        <Button color="warning" className="btn btn-primary btn-block">Sign Up</Button>
       </Form>
     </div>
   );

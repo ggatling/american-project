@@ -12,8 +12,9 @@ function Search ({handleInput, search}){
       <MDBFormInline className="md-form mr-auto mb-4">
         <input className="form-control mr-sm-3" type="text" placeholder="Search Movie" aria-label="Search"
         onChange={handleInput}
-        onKeyPress={search}/>
+        />
       </MDBFormInline>
+      <MDBBtn onClick={search}> Search </MDBBtn>
     </MDBCol>
     </Col>
     <Col></Col>

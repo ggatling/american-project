@@ -103,7 +103,7 @@ class User extends Component {
 
   render() {
     if (this.state.loggedIn) {
-      return <Redirect to="/profile" />;
+      return <Redirect to="/home" />;
     }
     return (
       <div>
