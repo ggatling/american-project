@@ -1,10 +1,12 @@
 import React from 'react';
+import {Button} from 'react-bootstrap';
 
-function Result({ result }) {
+function Result({ result, saveMovie}) {
 	return (
 		<div className="result">
 			<img src={result.Poster} />
 			<h3>{result.Title}</h3>
+			<Button variant="danger" onClick={saveMovie}>Save To Profile</Button>
 		</div>
 	)
 }
