@@ -11,10 +11,12 @@ function Home() {
     //search query
     results:[],
     //results array
-    selected:{}
-    //opens movies popup
+    Title:"",
+    Poster:""
   });
   const apiurl = "http://www.omdbapi.com/?apikey=a8ec5866";
+
+  const backendPost = "http://localhost:8080/savedmovies"
 
   const search = (e)=>{
       axios(apiurl + "&s="+ state.s).then(({data})=>{
@@ -26,6 +28,7 @@ function Home() {
       });
   }
 
+
   const handleInput = (e) => {
     let s = e.target.value;
 
@@ -35,6 +38,15 @@ function Home() {
     console.log(state.s)
   }
 
+
+  // const saveMovie = (e)=>{
+  //   axios.post(backendPost,{
+  //     title:'',
+  //     poster:''
+  //   })
+  // }
+
+
   return (
     <div className="App">
       <header>
@@ -42,7 +54,7 @@ function Home() {
       </header>
         <main>
           <Search handleInput ={handleInput} search ={search} />
-          <Results results={state.results}  />
+          <Results results={state.results} />
 
 
         </main>

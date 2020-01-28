@@ -4,22 +4,16 @@ import {Container,Col, Row} from 'react-bootstrap';
 
 function Search ({handleInput, search}){
   return (
-    <Container>
-    <Row>
-    <Col></Col>
-    <Col>
-    <MDBCol md="12">
-      <MDBFormInline className="md-form mr-auto mb-4">
-        <input className="form-control mr-sm-3" type="text" placeholder="Search Movie" aria-label="Search"
-        onChange={handleInput}
-        />
-      </MDBFormInline>
-      <MDBBtn onClick={search}> Search </MDBBtn>
+    <MDBCol lg="10">
+      <div className="active-pink-3 active-pink-4 mb-4">
+        <input className="form-control" type="text" placeholder="Search" aria-label="Search"
+        onChange={handleInput} />
+        <MDBBtn color="warning" onClick={search}> Search </MDBBtn>
+      </div>
+
     </MDBCol>
-    </Col>
-    <Col></Col>
-    </Row>
-    </Container>
+
+
   );
 }
 
