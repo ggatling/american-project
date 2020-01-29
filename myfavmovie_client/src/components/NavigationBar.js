@@ -1,7 +1,7 @@
 import React from 'react';
 import {Navbar, Nav, Button, Form, FormControl} from 'react-bootstrap';
 
-const NavigationBar = () => {
+function NavigationBar({handleInput, search}){
 
   return(
     <div>
@@ -12,8 +12,9 @@ const NavigationBar = () => {
     <Nav.Link href="user">Login/SignUp</Nav.Link>
   </Nav>
   <Form inline>
-    <FormControl type="text" placeholder="Search Movie" className="mr-sm-2" />
-    <Button variant="outline-warning">Search</Button>
+    <input className="form-control" type="text" placeholder="Search" aria-label="Search"
+    onChange={handleInput}/>
+    <Button variant="outline-warning" onClick={search}>Search</Button>
   </Form>
 </Navbar>
 
