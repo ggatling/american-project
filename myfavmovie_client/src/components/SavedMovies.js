@@ -50,21 +50,32 @@ class SavedMovies extends Component{
         poster:this.state.poster
       })
     })
+    .then(res => {
+      return res.json();
+    })
     .then(res =>{
-      const moviesObj ={
+      const savedMoviesObj ={
         title: res.title,
         poster: res.poster
       }
       this.setState({
         title: res.title,
         poster: res.poster,
-        movies:[...this.state.movies, moviesObj]
+        savedMovies:[...this.state.savedMovies, savedMoviesObj]
       })
     })
     .catch(err => {
       console.log(err);
     });
   }
+
+handleInputTitleChange = e => {
+  this,setState({title:e.target.value})
+}
+
+handleInputPosterChange = e => {
+  this,setState({poster:e.target.value})
+}
 
 render(){
   return(
