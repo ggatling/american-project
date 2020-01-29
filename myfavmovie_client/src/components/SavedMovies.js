@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {
   Row, Col, Container
 } from 'react-bootstrap';
+import AddClothes from "./AddClothes.js";
 
 class SavedMovies extends Component{
   constructor(props){

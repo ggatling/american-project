@@ -10,6 +10,7 @@ function NavigationBar({handleInput, search}){
   <Nav className="mr-auto">
     <Nav.Link href="home">Home</Nav.Link>
     <Nav.Link href="user">Login/SignUp</Nav.Link>
+    <Nav.Link href="savedmovies">Saved Movies</Nav.Link>
   </Nav>
   <Form inline>
     <input className="form-control" type="text" placeholder="Search" aria-label="Search"
