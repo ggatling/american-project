@@ -22,19 +22,28 @@ const AddMovie = (props) => {
           <FormGroup>
             <Input
               type="text"
-              name="brand"
-              id="brand"
+              name="title"
+              id="title"
               value={props.title}
               onChange={props.handleInputTitleChange}
-              placeholder="brand"
+              placeholder="title"
+            />
+            <Input
+              type="text"
+              name="poster"
+              id="poster"
+              value={props.poster}
+              onChange={props.handleInputPosterChange}
+              placeholder="poster"
             />
           </FormGroup>
-            <Button type="submit" onClick={toggle} className="btn btn-primary btn-block">Submit</Button>
+            <Button type="submit" onClick={toggle} className="btn btn-primary btn-block"color="danger">
+            Submit</Button>
         </Form>
         </ModalBody>
         <ModalFooter>
 
-        <Button color="secondary" onClick={toggle}>Cancel</Button>
+        <Button color="danger" onClick={toggle}>Cancel</Button>
         </ModalFooter>
       </Modal>
     </div>

@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
+import { Redirect } from "react-router-dom";
 import {
   Row, Col, Container
 } from 'react-bootstrap';
+import AddMovie from "./AddMovie.js";
+import Movie from "./Movie.js";
 
 class SavedMovies extends Component{
   constructor(props){
@@ -20,16 +23,19 @@ class SavedMovies extends Component{
 
   getSavedMovies = () =>{
     fetch("http://localhost:8080/savedmovies/list",{
-      method:"Get",
+      method: "Get",
       headers: new Headers({
-        "Authorization": "Bearer " + this.state.users),
+        'Authorization': "Bearer " + this.state.users,
         "Content-Type": "application/json"
       })
     })
     .then (res =>{
       return res.json()
+      console.log(res)
+
     })
     .then (res =>{
+      console.log(res)
       this.setState({
         savedmovies: res
       })
@@ -73,11 +79,11 @@ class SavedMovies extends Component{
   }
 
 handleInputTitleChange = e => {
-  this,setState({title:e.target.value})
+  this.setState({title:e.target.value})
 }
 
 handleInputPosterChange = e => {
-  this,setState({poster:e.target.value})
+  this.setState({poster:e.target.value})
 }
 
 render(){
@@ -85,21 +91,35 @@ render(){
     <div>
     <Container className="movieList">
       <Row>
-        <Col> Title </Col>
+        <Col> Click the button to add your favorite movie to the list </Col>
       </Row>
 
-      {this.state.savedMovies.length > 0 && this.state.savedMovies.map(savedMovies => {
-           return (
-             <Movie
-              title = {movie.title}
+      <Row>
+          <Col>
+              <AddMovie
+                title = {this.state.title}
+                poster = {this.state.poster}
+                handleInputTitleChange = {this.handleInputTitleChange}
+                handleInputPosterChange = {this.handleInputPosterChange}
+                addSavedMovie = {e => this.addSavedMovie(e)}
               />
-           )
+            </Col>
+          </Row>
 
-         })}
+          {this.state.savedMovies.length > 0 && this.state.savedMovies.map(movie => {
+               return (
+                 <Movie
+                  title = {movie.title}
+                  poster = {movie.poster}
+                  />
+               )
+
+             })}
+      </Container>
     </div>
   )
-}
 
+  }
 }
 
 export default SavedMovies;
