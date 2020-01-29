@@ -1,17 +1,20 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {
+  Row, Col, Container
+} from 'react-bootstrap';
 
 class SavedMovies extends Component{
   constructor(props){
     super(props);
     this.state={
       title:'',
-      savedmovies:[],
+      savedMovies:[],
       users:localStorage.getItem("user")
     }
   }
 
   componentDidMount =() =>{
-
+    this.getSavedMovies();
   }
 
 
@@ -19,7 +22,7 @@ class SavedMovies extends Component{
     fetch("http://localhost:8080/savedmovies/list",{
       method:"Get",
       headers: new Headers({
-        "Authorization": "Bearer " + localStorage.getItem("user"),
+        "Authorization": "Bearer " + this.state.users),
         "Content-Type": "application/json"
       })
     })
@@ -80,6 +83,19 @@ handleInputPosterChange = e => {
 render(){
   return(
     <div>
+    <Container className="movieList">
+      <Row>
+        <Col> Title </Col>
+      </Row>
+
+      {this.state.savedMovies.length > 0 && this.state.savedMovies.map(savedMovies => {
+           return (
+             <Movie
+              title = {movie.title}
+              />
+           )
+
+         })}
     </div>
   )
 }
