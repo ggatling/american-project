@@ -6,6 +6,7 @@ import {
 import AddMovie from "./AddMovie.js";
 import Movie from "./Movie.js";
 import Profile from "./Profile.js";
+import UpdateProfile from "./UpdateProfile.js"
 
 class SavedMovies extends Component{
   constructor(props){
@@ -17,16 +18,17 @@ class SavedMovies extends Component{
       favorite_movie:'',
       favorite_actor:'',
       favorite_genre:'',
-      id:'',
       users:localStorage.getItem("user")
     }
   }
 
-  componentDidMount =() =>{
+componentDidMount =() =>{
     this.getSavedMovies();
     this.getProfile();
   }
+componentDidUpdate =() =>{
 
+}
 
   getSavedMovies = () =>{
     fetch("http://localhost:8080/savedmovies/list",{
@@ -80,6 +82,9 @@ class SavedMovies extends Component{
         savedMovies:[...this.state.savedMovies, savedMoviesObj]
       })
     })
+    .then(res => {
+      this.getSavedMovies();
+    })
     .catch(err => {
       //alerts user that they need to login/signup first
       alert("WHOOPS, log into your account to add a movie!");
@@ -87,24 +92,27 @@ class SavedMovies extends Component{
   }
 
 
-  deleteMovie = (e) => {
-      fetch((`http://localhost:8080/movies/`+this.state.id), {
-          method: 'DELETE',
-          headers: {
-              "Authorization": "Bearer " + localStorage.getItem("user"),
-              "Content-Type": "application/json"
-          }
-      })
-      .then((res) => {
-          if (res.status === 200) {
-              alert("Movie Deleted!");
-          } else {
-              alert("Something went wrong...");
-          }
-      })
-      .catch((error) => {
-          alert("Something went wrong...");
-      })
+  deleteMovie = (movieId) => {
+    fetch((`http://localhost:8080/movies/${movieId}`), {
+        method: 'DELETE',
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem("user"),
+            "Content-Type": "application/json"
+        }
+    })
+    .then((res) => {
+        if (res.status === 200) {
+            alert("Movie Deleted!");
+        } else {
+            alert("Something went wrong...");
+        }
+    })
+    .then(res => {
+      this.getSavedMovies();
+    })
+    .catch((error) => {
+        alert("Something went wrong...");
+    })
 }
 
 
@@ -136,6 +144,40 @@ getProfile = () =>{
 }
 
 
+updateProfile =(e)=>{
+  e.preventDefault();
+  fetch("http://localhost:8080/profile",{
+    method:"Put",
+    headers: {
+      "Content-Type": "application/json",
+      'Authorization': "Bearer " + localStorage.getItem("user")
+    },
+    body: JSON.stringify({
+      email:this.state.email,
+      favorite_movie:this.state.favorite_movie,
+      favorite_actor:this.state.favorite_actor,
+      favorite_genre:this.state.favorite_genre,
+    })
+  })
+  .then(res => {
+    return res.json();
+  })
+  .then(res =>{
+    this.setState({
+      email:res.email,
+      favorite_movie:res.favorite_movie,
+      favorite_actor:res.favorite_actor,
+      favorite_genre:res.favorite_genre,
+      // savedMovies:[...this.state.savedMovies, savedMoviesObj]
+    })
+  })
+  .catch(err => {
+    //alerts user that they need to login/signup first
+    alert("WHOOPS, log into your account to update your profile!");
+  });
+}
+
+
 handleInputTitleChange = e => {
   this.setState({title:e.target.value})
 }
@@ -143,6 +185,24 @@ handleInputTitleChange = e => {
 handleInputPosterChange = e => {
   this.setState({poster:e.target.value})
 }
+
+handleInputEmailChange = e => {
+  this.setState({email:e.target.value})
+}
+
+handleInputFavMovieChange = e => {
+  this.setState({favorite_movie:e.target.value})
+}
+
+handleInputFavActorChange = e => {
+  this.setState({favorite_actor:e.target.value})
+}
+
+handleInputFavGenreChange = e => {
+  this.setState({favorite_genre:e.target.value})
+}
+
+
 
 render(){
   return(
@@ -162,26 +222,40 @@ render(){
                 addSavedMovie = {e => this.addSavedMovie(e)}
               />
             </Col>
+            <Col>
+              <UpdateProfile
+                email = {this.state.email}
+                favorite_movie = {this.state.favorite_movie}
+                favorite_actor = {this.state.favorite_actor}
+                favorite_genre = {this.state.favorite_genre}
+                handleInputEmailChange = {this.handleInputEmailChange}
+                handleInputFavMovieChange = {this.handleInputFavMovieChange}
+                handleInputFavActorChange = {this.handleInputFavActorChange}
+                handleInputFavGenreChange = {this.handleInputFavGenreChange}
+              />
+              </Col>
           </Row>
 
-          <Profile
-            email = {this.state.email}
-            favorite_movie = {this.state.favorite_movie}
-            favorite_actor = {this.state.favorite_actor}
-            favorite_genre = {this.state.favorite_genre}
-          />
+              <Profile
+                email = {this.state.email}
+                favorite_movie = {this.state.favorite_movie}
+                favorite_actor = {this.state.favorite_actor}
+                favorite_genre = {this.state.favorite_genre}
+              />
 
-
-          {this.state.savedMovies.length > 0 && this.state.savedMovies.reverse().map(movie => {
+          <div className="moviecard">
+          {this.state.savedMovies.length > 0 && this.state.savedMovies.map(movie => {
                return (
                  <Movie
-                  key = {movie.id}
+                  movieId = {movie.id}
                   title = {movie.title}
                   poster = {movie.poster}
+                  deleteFunc = {this.deleteMovie}
                   />
                )
 
              })}
+          </div>
 
       </Container>
     </div>

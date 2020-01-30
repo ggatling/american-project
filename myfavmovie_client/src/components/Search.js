@@ -1,6 +1,5 @@
 import React from "react";
-import { MDBCol, MDBFormInline, MDBBtn } from "mdbreact";
-import {Container,Col, Row} from 'react-bootstrap';
+import { MDBCol, MDBBtn } from "mdbreact";
 
 function Search ({handleInput, search}){
   return (

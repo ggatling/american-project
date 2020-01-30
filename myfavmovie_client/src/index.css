@@ -95,9 +95,7 @@ div{
 
 .moviecard{
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  margin: 0px -15px;
+  flex-direction: column-reverse;
 }
 
 .d-flex div{
