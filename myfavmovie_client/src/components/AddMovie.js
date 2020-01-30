@@ -28,13 +28,14 @@ const AddMovie = (props) => {
               onChange={props.handleInputTitleChange}
               placeholder="title"
             />
+            <br/>
             <Input
               type="text"
               name="poster"
               id="poster"
               value={props.poster}
               onChange={props.handleInputPosterChange}
-              placeholder="poster"
+              placeholder="poster image url"
             />
           </FormGroup>
             <Button type="submit" onClick={toggle} className="btn btn-primary btn-block"color="danger">

@@ -3,7 +3,7 @@ import {Card,Button,Row, Container} from 'react-bootstrap';
 
 
 
-const Movie = props => {
+const Movie = (props) => {
   return(
     <Container>
     <Row>
@@ -22,6 +22,7 @@ const Movie = props => {
     </div>
     </Row>
     </Container>
+
   )
 }
 
