@@ -40,7 +40,7 @@ public class SavedMoviesController {
     }
 
     //Delete movie by id
-    @DeleteMapping("/movies/{savedMovieId}")
+    @DeleteMapping("/movies/{moviesId}")
     public ResponseEntity deleteSavedMovies(@PathVariable Long moviesId) {
         return savedMoviesService.deleteSavedMovies(moviesId);
     }
