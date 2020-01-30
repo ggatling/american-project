@@ -86,3 +86,8 @@ div{
   background: white;
   color: #223343;
 }
+
+.movieImg {
+  height: 400px;
+  width: 300px;
+}
