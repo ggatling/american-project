@@ -5,6 +5,7 @@ import {
 } from 'react-bootstrap';
 import AddMovie from "./AddMovie.js";
 import Movie from "./Movie.js";
+import Profile from "./Profile.js";
 
 class SavedMovies extends Component{
   constructor(props){
@@ -12,6 +13,10 @@ class SavedMovies extends Component{
     this.state={
       title:'',
       savedMovies:[],
+      email:'',
+      favorite_movie:'',
+      favorite_actor:'',
+      favorite_genre:'',
       id:'',
       users:localStorage.getItem("user")
     }
@@ -19,6 +24,7 @@ class SavedMovies extends Component{
 
   componentDidMount =() =>{
     this.getSavedMovies();
+    this.getProfile();
   }
 
 
@@ -101,6 +107,35 @@ class SavedMovies extends Component{
       })
 }
 
+
+getProfile = () =>{
+  fetch("http://localhost:8080/profile",{
+    method: "Get",
+    headers: new Headers({
+      'Authorization': "Bearer " + this.state.users,
+      "Content-Type": "application/json"
+    })
+  })
+  .then (res =>{
+    return res.json()
+    console.log(res)
+
+  })
+  .then (res =>{
+    this.setState({
+      email:res.email,
+      favorite_movie:res.favorite_movie,
+      favorite_actor:res.favorite_actor,
+      favorite_genre:res.favorite_genre,
+    })
+    return res;
+  })
+  .catch(err => {
+    console.log(err);
+  });
+}
+
+
 handleInputTitleChange = e => {
   this.setState({title:e.target.value})
 }
@@ -128,6 +163,13 @@ render(){
               />
             </Col>
           </Row>
+
+          <Profile
+            email = {this.state.email}
+            favorite_movie = {this.state.favorite_movie}
+            favorite_actor = {this.state.favorite_actor}
+            favorite_genre = {this.state.favorite_genre}
+          />
 
 
           {this.state.savedMovies.length > 0 && this.state.savedMovies.reverse().map(movie => {
