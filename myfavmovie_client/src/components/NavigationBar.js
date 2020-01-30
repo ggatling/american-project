@@ -11,6 +11,7 @@ function NavigationBar({handleInput, search}){
     <Nav.Link href="home">Home</Nav.Link>
     <Nav.Link href="user">Login/SignUp</Nav.Link>
     <Nav.Link href="savedmovies">Saved Movies</Nav.Link>
+    <Nav.Link href="logout">Logout</Nav.Link>
   </Nav>
   <Form inline>
     <input className="form-control" type="text" placeholder="Search" aria-label="Search"
