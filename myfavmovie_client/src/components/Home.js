@@ -21,6 +21,7 @@ function Home() {
   const search = (e)=>{
       axios(apiurl + "&s="+ state.s).then(({data})=>{
         let results = data.Search;
+        console.log(state.s)
         //when you hit enter, search what the user input
         setState(prevState =>{
           return {...prevState, results: results }
@@ -39,12 +40,30 @@ function Home() {
   }
 
 
-  // const saveMovie = (e)=>{
-  //   axios.post(backendPost,{
-  //     title:'',
-  //     poster:''
-  //   })
-  // }
+  const saveMovie = (movieTitle, moviePoster) => {
+    // e.preventDefault();
+    fetch(backendPost, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': "Bearer " + localStorage.getItem("user")
+      },
+      body: JSON.stringify({
+        title: movieTitle,
+        poster: moviePoster
+      })
+    })
+    .then(res => {
+     return res.json();
+   })
+   .then(res =>{
+     alert("Movie Added!");
+   })
+      .catch(err => {
+        //alerts user that they need to login/signup first
+        alert("WHOOPS, log into your account to add a movie!");
+      });
+  }
 
 
   return (
@@ -54,8 +73,7 @@ function Home() {
       </header>
         <main>
           <Search handleInput ={handleInput} search ={search} />
-          <Results results={state.results} />
-
+          <Results results={state.results} saveMovie={saveMovie} />
 
         </main>
 

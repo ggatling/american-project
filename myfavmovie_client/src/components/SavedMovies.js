@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { Redirect } from "react-router-dom";
 import {
   Row, Col, Container
 } from 'react-bootstrap';
@@ -73,12 +72,12 @@ componentDidUpdate =() =>{
     })
     .then(res =>{
       const savedMoviesObj ={
-        title: res.title,
-        poster: res.poster
+        title: res.Title,
+        poster: res.Poster
       }
       this.setState({
-        title: res.title,
-        poster: res.poster,
+        title: res.Title,
+        poster: res.Poster,
         savedMovies:[...this.state.savedMovies, savedMoviesObj]
       })
     })
@@ -232,6 +231,7 @@ render(){
                 handleInputFavMovieChange = {this.handleInputFavMovieChange}
                 handleInputFavActorChange = {this.handleInputFavActorChange}
                 handleInputFavGenreChange = {this.handleInputFavGenreChange}
+                updateProfile = {e => this.updateProfile(e)}
               />
               </Col>
           </Row>
