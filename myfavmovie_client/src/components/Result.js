@@ -6,7 +6,7 @@ function Result({ result, saveMovie}) {
 		<div className="result">
 			<img src={result.Poster} />
 			<h3>{result.Title}</h3>
-			<Button variant="danger" onClick={saveMovie}>Save To Profile</Button>
+			<Button variant="danger" onClick={() => saveMovie(result.Title, result.Poster)}>Save To Profile</Button>
 		</div>
 	)
 }
