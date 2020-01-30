@@ -6,7 +6,6 @@ const Login = props => {
       <h2> Login </h2>
       <Form onSubmit={e => props.submitLogin(e)}>
         <FormGroup>
-          <Label for="Username">Username</Label>
           <Input
             type="username"
             name="username"
@@ -17,7 +16,6 @@ const Login = props => {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="Password">Password</Label>
           <Input
             type="password"
             name="password"

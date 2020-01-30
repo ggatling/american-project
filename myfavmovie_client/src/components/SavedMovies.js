@@ -12,6 +12,7 @@ class SavedMovies extends Component{
     this.state={
       title:'',
       savedMovies:[],
+      id:'',
       users:localStorage.getItem("user")
     }
   }
@@ -74,9 +75,31 @@ class SavedMovies extends Component{
       })
     })
     .catch(err => {
-      console.log(err);
+      //alerts user that they need to login/signup first
+      alert("WHOOPS, log into your account to add a movie!");
     });
   }
+
+
+  deleteMovie = (e) => {
+      fetch((`http://localhost:8080/movies/`+this.state.id), {
+          method: 'DELETE',
+          headers: {
+              "Authorization": "Bearer " + localStorage.getItem("user"),
+              "Content-Type": "application/json"
+          }
+      })
+      .then((res) => {
+          if (res.status === 200) {
+              alert("Movie Deleted!");
+          } else {
+              alert("Something went wrong...");
+          }
+      })
+      .catch((error) => {
+          alert("Something went wrong...");
+      })
+}
 
 handleInputTitleChange = e => {
   this.setState({title:e.target.value})
@@ -110,6 +133,7 @@ render(){
           {this.state.savedMovies.length > 0 && this.state.savedMovies.reverse().map(movie => {
                return (
                  <Movie
+                  key = {movie.id}
                   title = {movie.title}
                   poster = {movie.poster}
                   />
