@@ -6,6 +6,7 @@ import { Jumbotron } from "./components/Jumbotron.js";
 import Home from "./components/Home.js";
 import User from "./components/User.js"
 import SavedMovies from "./components/SavedMovies.js"
+import Logout from "./components/Logout.js"
 
 class App extends Component{
 
@@ -24,6 +25,7 @@ class App extends Component{
             <Route path="/home" component={Home} />
             <Route path="/user" component={User} />
             <Route path="/savedmovies" component={SavedMovies} />
+            <Route path="/logout" component={Logout}/>
           </Switch>
         </Router>
 
