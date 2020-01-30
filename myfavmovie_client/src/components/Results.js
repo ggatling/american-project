@@ -3,11 +3,11 @@ import Result from './Result'
 
 function Results ({ results }) {
 return (
-  <section className="results">
+  <div className="results">
     {results.map(result => (
       <Result key={result.imdbID} result={result}/>
     ))}
-  </section>
+  </div>
 )
 }
 
