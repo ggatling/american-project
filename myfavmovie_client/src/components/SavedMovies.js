@@ -106,7 +106,8 @@ render(){
             </Col>
           </Row>
 
-          {this.state.savedMovies.length > 0 && this.state.savedMovies.map(movie => {
+
+          {this.state.savedMovies.length > 0 && this.state.savedMovies.reverse().map(movie => {
                return (
                  <Movie
                   title = {movie.title}
@@ -115,6 +116,7 @@ render(){
                )
 
              })}
+
       </Container>
     </div>
   )

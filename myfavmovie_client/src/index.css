@@ -91,3 +91,19 @@ div{
   height: 400px;
   width: 300px;
 }
+
+.moviecard{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 0px -15px;
+}
+
+.d-flex div{
+  padding: 1rem;
+  background-color: #757575;
+  border: 2px solid #fff;
+  color: #fff;
+  text-align: center;
+
+}
