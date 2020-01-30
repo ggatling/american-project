@@ -37,7 +37,7 @@ class SavedMovies extends Component{
     .then (res =>{
       console.log(res)
       this.setState({
-        savedmovies: res
+        savedMovies: res
       })
       return res;
     })
