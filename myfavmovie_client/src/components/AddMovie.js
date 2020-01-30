@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Form, FormGroup, Label, Input } from 'reactstrap';
+import { Form, FormGroup, Input } from 'reactstrap';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 const AddMovie = (props) => {

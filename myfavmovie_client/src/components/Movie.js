@@ -15,7 +15,7 @@ const Movie = (props) => {
       <Card.Title>{props.title}</Card.Title>
       <Card.Text>
       </Card.Text>
-        <Button variant="danger">Delete</Button>
+        <Button variant="danger" onClick={() => props.deleteFunc(props.movieId)}>Delete</Button>
     </Card.Body>
   </Card>
     </div>
