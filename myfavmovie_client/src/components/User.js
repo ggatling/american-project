@@ -9,6 +9,7 @@ import {
 class User extends Component {
   constructor(props) {
     super(props);
+    // setting the inital state of the user not logged in
     this.state = {
       user: {
         userProfile:{
@@ -52,6 +53,7 @@ class User extends Component {
 
   submitSignup = e => {
     e.preventDefault();
+    //makes event canceable 
     fetch("http://localhost:8080/signup", {
       method: "POST",
       headers: {

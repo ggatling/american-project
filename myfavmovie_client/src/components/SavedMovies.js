@@ -208,7 +208,13 @@ render(){
     <div>
 
       <Row>
-        <Col> Click the button to add your favorite movie to the list </Col>
+        <Col>
+        <div className="savedHead">
+        <h3>
+        Check out your favorite movies or add a new one to the list!
+        </h3>
+        </div>
+         </Col>
       </Row>
 
       <Row>
