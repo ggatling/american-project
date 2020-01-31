@@ -37,7 +37,12 @@ React
 - npm install axios
 
 ### Approach
-I started by first planning out my backend relational database and outlining the business logic so I could have a visual representation of how I wanted the App to work. Then I moved on to working on the backend in Java so that when I moved on to the front end, I would be able to have working end points for both the OMDB API and the API I built. After I completed my backend, I tested endpoints in Postman and made sure that they were all working correctly. Next I moved on to the front end in React. I decided to use Reactstrap because a lot of enterprise and start up companies use the Bootstrap library and I wanted to get some practice implementing components. I decided to first fetch data from the OMDB API and render it on to my page and then moved on to getting and posting data to my API. Lastly I tested out different styling edits.
+I started by first planning out my backend relational database and outlining the business logic so I could have a visual representation of how I wanted the App to work. Then I moved on to working on the backend in Java so that when I moved on to the front end, I would be able to have working end points for both the OMDB API and the API I built. After I completed my backend, I tested endpoints in Postman and made sure that they were all working correctly. Next I moved on to the front end in React. I decided to use Reactstrap because a lot of enterprise and start up companies use the Bootstrap library and I wanted to get some practice implementing components. Then I decided to first fetch data from the OMDB API and render it on to my page and then moved on to getting and posting data to my API. Lastly I tested out different styling edits.
 
 ### Project Hurdles
-- My biggest project hurdle was figuring out the logic for how the external API data on the front end would save to my backend. Once I allowed users to manually add movies to their saved movies, I was able to have better visual understanding of how to grab the data from the OMDB API.
+My biggest project hurdle was figuring out the logic for how the external API data on the front end would save to my backend. Once I allowed users to manually add movies to their saved movies, I was able to have better visual understanding of how to grab the data from the OMDB API.
+
+### Future Additions
+- Protected Route for Saved Movies
+- Loading Spinners
+- More Styling
