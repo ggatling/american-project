@@ -19,13 +19,16 @@ function Home() {
   const backendPost = "http://localhost:8080/savedmovies"
 
   const search = (e)=>{
-      axios(apiurl + "&s="+ state.s).then(({data})=>{
+      axios(apiurl + "&s="+ state.s)
+      .then(({data})=>{
         let results = data.Search;
-        console.log(state.s)
         //when you hit enter, search what the user input
         setState(prevState =>{
           return {...prevState, results: results }
         })
+      })
+      .catch(err =>{
+        alert("ERROR If at first you dont succeed, try again")
       });
   }
 
