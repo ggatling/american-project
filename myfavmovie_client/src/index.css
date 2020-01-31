@@ -117,3 +117,11 @@ div{
 .profile{
   padding-left: 10px
 }
+
+.savedHead{
+  font-family: Gill Sans Extrabold, sans-serif; 
+  background-color: #fcd703;
+  text-align: center;
+  margin-left: 60px;
+  margin-right: 60px;
+}
