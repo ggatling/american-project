@@ -50,7 +50,7 @@ componentDidUpdate =() =>{
       return res;
     })
     .catch(err => {
-      console.log(err);
+      alert("ERROR: Something when wrong, try refreshing the page")
     });
   }
 
