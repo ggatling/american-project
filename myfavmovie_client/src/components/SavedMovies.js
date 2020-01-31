@@ -206,7 +206,7 @@ handleInputFavGenreChange = e => {
 render(){
   return(
     <div>
-    
+
       <Row>
         <Col> Click the button to add your favorite movie to the list </Col>
       </Row>
