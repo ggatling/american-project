@@ -60,11 +60,7 @@ function Home() {
      return res.json();
    })
    .then(res =>{
-     if (res.status === 200) {
-         alert("Movie Added!");
-     } else {
-         alert("WHOOPS, log into your account to add a movie!");
-     }
+     alert("Movie Added!!")
    })
       .catch(err => {
         //alerts user that they need to login/signup first
