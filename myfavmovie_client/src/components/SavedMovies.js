@@ -25,9 +25,7 @@ componentDidMount =() =>{
     this.getSavedMovies();
     this.getProfile();
   }
-componentDidUpdate =() =>{
 
-}
 
   getSavedMovies = () =>{
     fetch("http://localhost:8080/savedmovies/list",{
