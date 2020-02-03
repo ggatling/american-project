@@ -38,8 +38,7 @@ class User extends Component {
         return res.json();
       })
       .then(res => {
-        console.log(res, "this better be a token");
-        console.log(this.state.user);
+            alert("Login Succesful")
         this.setState({
           user: { ...this.state.user, res },
           loggedIn: true
@@ -53,7 +52,7 @@ class User extends Component {
 
   submitSignup = e => {
     e.preventDefault();
-    //makes event canceable 
+    //makes event canceable
     fetch("http://localhost:8080/signup", {
       method: "POST",
       headers: {
