@@ -38,7 +38,7 @@ class User extends Component {
         return res.json();
       })
       .then(res => {
-            alert("Login Succesful")
+            alert("Login Successful")
         this.setState({
           user: { ...this.state.user, res },
           loggedIn: true
